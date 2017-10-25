@@ -3,7 +3,6 @@ import discord
 import time
 import asyncio
 import os
-from plugins.pluginmanager import plugins
 import random
 import redis
 
@@ -211,8 +210,22 @@ class l1nk():
             sexuality = message.content[11:]
             if sexuality.lower() == 'gay':
                 pass
-                
 
-       
+        # N E W S L E T T E R
+        Admins = ['292556142952054794']
+        subs = ['292556142952054794', '337333673781100545']
+        if message.content.startswith('/newsl') and message.author.id in Admins:
+            dm = await link.start_private_message(message.author)
+            await link.send_message(dm, 'What will the **news** be?')
+            news = await link.wait_for_message(author=message.author, channel=dm)
+            await link.send_message(dm, 'The **news** has been **announced.**')
+            for peepz in subs:
+                peep = await link.get_user_info(peepz)
+                peepdm = await link.start_private_message(peep)
+                await link.send_message(peepdm, news.content)
+
+
+
+
 
 link.run(TOKEN)
