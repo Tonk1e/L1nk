@@ -1,2 +1,2 @@
-# l1nk
+# L1nk
 A Discord Bot.
