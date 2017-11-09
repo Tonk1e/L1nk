@@ -205,12 +205,6 @@ class l1nk():
 
             await link.send_message(message.channel, embed = userembed)
 
-        # S E X U A L I T Y
-        if message.content.lower().startswith('/sexuality'):
-            sexuality = message.content[11:]
-            if sexuality.lower() == 'gay':
-                pass
-
         # N E W S L E T T E R
         Admins = ['292556142952054794']
         subs = ['292556142952054794', '337333673781100545']
@@ -223,6 +217,24 @@ class l1nk():
                 peep = await link.get_user_info(peepz)
                 peepdm = await link.start_private_message(peep)
                 await link.send_message(peepdm, news.content)
+
+        # R E Q U E S T   A D M I N
+        if message.content.startswith('/getadmin'):
+            if message.server.name == 'L1nk':
+                ma = await link.get_user_info('{}'.format(message.author.id))
+                madm = await link.start_private_message(ma)
+                await link.send_message(madm, 'Please state **why** you would like to be an **admin**, and **why** you think you **deserve** so. (All in one message please.)')
+                comp_form = await link.wait_for_message(author=message.author, content=None)
+                await link.send_message(comp_form.channel, 'Your **request** is being processed...')
+                tonk1e = await link.get_user_info('292556142952054794')
+                tonk1edm = await link.start_private_message(tonk1e)
+                await link.send_message(tonkledm, '{} has requested L1nk admin.'.format(message.author.name))
+                await link.send_message(tonk1edm, 'This is the **form**:')
+                await link.send_message(tonk1edm)
+            else:
+                await link.send_message(message.channel, 'Please join the **official** L1nk server here:')
+                asyncio.sleep(100)
+                await link.send_message(message.channel, 'This command is for becoming an **admin** on the **official** L1nk server.')
 
 
 
